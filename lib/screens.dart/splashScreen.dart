@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'homeScreen.dart';
 import 'loginScreen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -12,6 +11,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  // بعد ثلاث ثواني سينتقل الى الصفحة الاخرى
   _loadSlpash() async {
     // Time (splash)
     Timer(

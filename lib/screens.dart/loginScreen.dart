@@ -124,6 +124,7 @@ class _LoginState extends State<Login> {
                                       ),
                                     ),
                                     onPressed: () async {
+                                      // التحقق من المدخلات هل هي فارغة ام لا
                                       if (_email.text.isEmpty ||
                                           _password.text.isEmpty) {
                                         Fluttertoast.showToast(
@@ -140,11 +141,13 @@ class _LoginState extends State<Login> {
                                           setState(() {
                                             load = true;
                                           });
+                                          // تسجيل الدخول بواسطة الايميل وكلمة المرور
                                           UserCredential userCredential =
                                               await FirebaseAuth.instance
                                                   .signInWithEmailAndPassword(
                                                       email: _email.text,
                                                       password: _password.text);
+                                          // التحقق من ان الاسم الخاص به عامل توصيل
 
                                           if (userCredential.user.displayName ==
                                               "dilvery") {
@@ -171,6 +174,7 @@ class _LoginState extends State<Login> {
                                                 backgroundColor: Colors.red,
                                                 textColor: Colors.white,
                                                 fontSize: 16.0);
+                                            // تسجيل الخروج في حال كان غير مؤهل للدخول
                                             await FirebaseAuth.instance
                                                 .signOut();
                                           }
