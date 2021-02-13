@@ -10,6 +10,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  // المتغيرات الخاصة بالايميل وكلمة المرور
   TextEditingController _email = TextEditingController();
   TextEditingController _password = TextEditingController();
   bool load = false;
@@ -187,6 +188,7 @@ class _LoginState extends State<Login> {
                                             load = false;
                                           });
                                           print(e);
+                                          // طباعة الاخطاء في حال حدوث اي خطا
 
                                           if (e
                                               .toString()
