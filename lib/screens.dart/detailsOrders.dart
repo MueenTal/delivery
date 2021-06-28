@@ -12,6 +12,7 @@ class DetailsOrders extends StatefulWidget {
   final String date;
   final String Mname;
   final int price;
+  final bool delevery;
   final String id;
 
 
@@ -26,6 +27,7 @@ class DetailsOrders extends StatefulWidget {
         this.date,
         this.Mname,
         this.price,
+        this.delevery,
         this.id,
       });
   @override
@@ -190,12 +192,13 @@ class _DetailsOrdersState extends State<DetailsOrders> {
                               ),
                               onPressed: ()
                               async {
-                                String id= widget.id;
+                                String id=widget.id;
                                 await FirebaseFirestore.instance
-                                    .collection('orders')
+                                    .collection('card')
                                     .doc(id)
-                                    .delete();
-                                Navigator.pop(context);
+                                    .update({
+                                  "confirm": true,
+                                });
 
                               }
 

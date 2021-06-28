@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   stream: FirebaseFirestore.instance
                       .collection('orders')
                       .where('DId',
-                      isEqualTo: FirebaseAuth.instance.currentUser.uid)
+                      isEqualTo: FirebaseAuth.instance.currentUser.uid).where('delevery',isEqualTo: false)
                       .snapshots(),
                   builder: (BuildContext context,
                       AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -62,8 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           document.data()['date'],
                           document.data()['Mname'],
                           document.data()['price'],
-
-
+                          document.data()['delevery'],
 
                         );
                       }).toList(),
@@ -74,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
             )));
   }
 
-  Widget item(Caddress, Cid, Cname, id,DId, Daddress, Dname,date,Mname,price) {
+  Widget item(Caddress, Cid, Cname, id,DId, Daddress, Dname,date,Mname,price,delevery) {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
@@ -82,15 +81,15 @@ class _HomeScreenState extends State<HomeScreen> {
               Caddress: Caddress,
               Cid: Cid,
               Cname: Cname,
-              Daddress: Daddress,
+              id:id,
               DId: DId,
+              Daddress: Daddress,
               Dname: Dname,
               date: date,
               Mname:Mname,
               price:price,
+              delevery:delevery,
 
-
-              id:id,
             )));
       },
       child: Column(
