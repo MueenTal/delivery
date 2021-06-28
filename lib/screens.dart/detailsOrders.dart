@@ -194,12 +194,12 @@ class _DetailsOrdersState extends State<DetailsOrders> {
                               async {
                                 String id=widget.id;
                                 await FirebaseFirestore.instance
-                                    .collection('card')
+                                    .collection('orders')
                                     .doc(id)
                                     .update({
-                                  "confirm": true,
+                                  "delevery": true,
                                 });
-
+                                Navigator.pop(context);
                               }
 
                           )),)
